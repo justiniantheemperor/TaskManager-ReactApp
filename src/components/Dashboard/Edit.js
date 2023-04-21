@@ -6,13 +6,14 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
   const [completed, setCompleted] = useState(selectedEmployee.completed)
   const [name, setName] = useState(selectedEmployee.name);
   const [description, setDescription] = useState(selectedEmployee.description);
+  const [hours, setHours] = useState(selectedEmployee.hours);
   const [dueDate, setDueDate] = useState(selectedEmployee.dueDate);
 
 
   const handleUpdate = e => {
     e.preventDefault();
 
-    if (!completed || !name || !description || !dueDate) {
+    if (!completed || !name || !description || !hours ||!dueDate) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -26,6 +27,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
       completed,
       name,
       description,
+      hours,
       dueDate,
     };
 
@@ -76,6 +78,15 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
           name="description"
           value={description}
           onChange={e => setDescription(e.target.value)}
+        />
+        <label htmlFor="hours">Hours</label>
+        <input
+          id="hours"
+          type="number"
+          step="0.5"
+          name="hours"
+          value={hours}
+          onChange={e => setHours(e.target.value)}
         />
         <label htmlFor="dueDate">Due Date</label>
         <input

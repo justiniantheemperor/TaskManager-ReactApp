@@ -5,6 +5,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
   const [name, setName] = useState('');
   const [completed, setCompleted] = useState('');
   const [description, setDescription] = useState('');
+  const [hours, setHours] = useState('');
   const [dueDate, setDueDate] = useState('');
 
   const handleAdd = e => {
@@ -25,6 +26,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
       completed,
       name,
       description,
+      hours,
       dueDate,
     };
 
@@ -71,6 +73,15 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
           name="description"
           value={description}
           onChange={e => setDescription(e.target.value)}
+        />
+        <label htmlFor="hours">Hours</label>
+        <input
+          id="hours"
+          type="number"
+          step="0.5"
+          name="hours"
+          value={hours}
+          onChange={e => setHours(e.target.value)}
         />
         <label htmlFor="dueDate">Due Date</label>
         <input
