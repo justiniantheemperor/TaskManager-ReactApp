@@ -6,23 +6,23 @@ import Table from './Table';
 import Add from './Add';
 import Edit from './Edit';
 
-import { employeesData } from '../../data';
+import { tasksData } from '../../data';
 
 const Dashboard = ({ setIsAuthenticated }) => {
-  const [employees, setEmployees] = useState(employeesData);
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
+  const [tasks, setTasks] = useState(tasksData);
+  const [selectedTask, setSelectedTask] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('employees_data'));
-    if (data !== null && Object.keys(data).length !== 0) setEmployees(data);
+    const data = JSON.parse(localStorage.getItem('tasks_data'));
+    if (data !== null && Object.keys(data).length !== 0) setTasks(data);
   }, []);
 
   const handleEdit = id => {
-    const [employee] = employees.filter(employee => employee.id === id);
+    const [task] = tasks.filter(task => task.id === id);
 
-    setSelectedEmployee(employee);
+    setSelectedTask(task);
     setIsEditing(true);
   };
 
@@ -36,19 +36,19 @@ const Dashboard = ({ setIsAuthenticated }) => {
       cancelButtonText: 'No, cancel!',
     }).then(result => {
       if (result.value) {
-        const [employee] = employees.filter(employee => employee.id === id);
+        const [task] = tasks.filter(task => task.id === id);
 
         Swal.fire({
           icon: 'success',
           title: 'Deleted!',
-          text: `${employee.name} ${employee.description}'s data has been deleted.`,
+          text: `${task.name} ${task.description}'s data has been deleted.`,
           showConfirmButton: false,
           timer: 1500,
         });
 
-        const employeesCopy = employees.filter(employee => employee.id !== id);
-        localStorage.setItem('employees_data', JSON.stringify(employeesCopy));
-        setEmployees(employeesCopy);
+        const tasksCopy = tasks.filter(task => task.id !== id);
+        localStorage.setItem('tasks_data', JSON.stringify(tasksCopy));
+        setTasks(tasksCopy);
       }
     });
   };
@@ -62,7 +62,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
             setIsAuthenticated={setIsAuthenticated}
           />
           <Table
-            employees={employees}
+            tasks={tasks}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
           />
@@ -70,16 +70,16 @@ const Dashboard = ({ setIsAuthenticated }) => {
       )}
       {isAdding && (
         <Add
-          employees={employees}
-          setEmployees={setEmployees}
+          tasks={tasks}
+          setTasks={setTasks}
           setIsAdding={setIsAdding}
         />
       )}
       {isEditing && (
         <Edit
-          employees={employees}
-          selectedEmployee={selectedEmployee}
-          setEmployees={setEmployees}
+          tasks={tasks}
+          selectedTask={selectedTask}
+          setTasks={setTasks}
           setIsEditing={setIsEditing}
         />
       )}

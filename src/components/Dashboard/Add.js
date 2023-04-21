@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const Add = ({ employees, setEmployees, setIsAdding }) => {
+const Add = ({ tasks, setTasks, setIsAdding }) => {
   const [name, setName] = useState('');
   const [completed, setCompleted] = useState('');
   const [description, setDescription] = useState('');
@@ -20,8 +20,8 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
       });
     }
 
-    const id = employees.length + 1;
-    const newEmployee = {
+    const id = tasks.length + 1;
+    const newTask = {
       id,
       completed,
       name,
@@ -30,9 +30,9 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
       dueDate,
     };
 
-    employees.push(newEmployee);
-    localStorage.setItem('employees_data', JSON.stringify(employees));
-    setEmployees(employees);
+    tasks.push(newTask);
+    localStorage.setItem('tasks_data', JSON.stringify(tasks));
+    setTasks(tasks);
     setIsAdding(false);
 
     Swal.fire({
@@ -47,7 +47,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
   return (
     <div className="small-container">
       <form onSubmit={handleAdd}>
-        <h1>Add Employee</h1>
+        <h1>Add Task</h1>
 
         <label htmlFor="completed">Complete?</label>
         <input

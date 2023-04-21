@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Table = ({ employees, handleEdit, handleDelete }) => {
-  employees.forEach((employee, i) => {
-    employee.id = i + 1;
+const Table = ({ tasks, handleEdit, handleDelete }) => {
+  tasks.forEach((task, i) => {
+    task.id = i + 1;
   });
 
   return (
@@ -22,18 +22,18 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
           </tr>
         </thead>
         <tbody>
-          {employees.length > 0 ? (
-            employees.map((employee, i) => (
-              <tr key={employee.id}>
+          {tasks.length > 0 ? (
+            tasks.map((task, i) => (
+              <tr key={task.id}>
                 <td>{i + 1}</td>
-                <td>{employee.completed}</td>
-                <td>{employee.name}</td>
-                <td>{employee.description}</td>
-                <td>{employee.hours}</td>
-                <td>{employee.dueDate} </td>
+                <td>{task.completed}</td>
+                <td>{task.name}</td>
+                <td>{task.description}</td>
+                <td>{task.hours}</td>
+                <td>{task.dueDate} </td>
                 <td className="text-right">
                   <button
-                    onClick={() => handleEdit(employee.id)}
+                    onClick={() => handleEdit(task.id)}
                     className="button muted-button"
                   >
                     Edit
@@ -41,7 +41,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
                 </td>
                 <td className="text-left">
                   <button
-                    onClick={() => handleDelete(employee.id)}
+                    onClick={() => handleDelete(task.id)}
                     className="button muted-button"
                   >
                     Delete

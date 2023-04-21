@@ -1,4 +1,4 @@
-const employeesData = [
+const tasksData = [
   {
     id: 1,
     completed: 'true',
@@ -17,4 +17,4 @@ const employeesData = [
   },
 ];
 
-export { employeesData };
+export { tasksData };

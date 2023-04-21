@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
-  const id = selectedEmployee.id;
-  const [completed, setCompleted] = useState(selectedEmployee.completed)
-  const [name, setName] = useState(selectedEmployee.name);
-  const [description, setDescription] = useState(selectedEmployee.description);
-  const [hours, setHours] = useState(selectedEmployee.hours);
-  const [dueDate, setDueDate] = useState(selectedEmployee.dueDate);
+const Edit = ({ tasks, selectedTask, setTasks, setIsEditing }) => {
+  const id = selectedTask.id;
+  const [completed, setCompleted] = useState(selectedTask.completed)
+  const [name, setName] = useState(selectedTask.name);
+  const [description, setDescription] = useState(selectedTask.description);
+  const [hours, setHours] = useState(selectedTask.hours);
+  const [dueDate, setDueDate] = useState(selectedTask.dueDate);
 
 
   const handleUpdate = e => {
@@ -22,7 +22,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
       });
     }
 
-    const employee = {
+    const task = {
       id,
       completed,
       name,
@@ -31,21 +31,21 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
       dueDate,
     };
 
-    for (let i = 0; i < employees.length; i++) {
-      if (employees[i].id === id) {
-        employees.splice(i, 1, employee);
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].id === id) {
+        tasks.splice(i, 1, task);
         break;
       }
     }
 
-    localStorage.setItem('employees_data', JSON.stringify(employees));
-    setEmployees(employees);
+    localStorage.setItem('tasks_data', JSON.stringify(tasks));
+    setTasks(tasks);
     setIsEditing(false);
 
     Swal.fire({
       icon: 'success',
       title: 'Updated!',
-      text: `${employee.name} task data has been updated.`,
+      text: `${task.name} task data has been updated.`,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -54,7 +54,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
   return (
     <div className="small-container">
       <form onSubmit={handleUpdate}>
-        <h1>Edit Employee</h1>
+        <h1>Edit Task</h1>
         <label htmlFor="completed">Task completed?</label>
         <input
           id="completed"
