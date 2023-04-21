@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 
 const Add = ({ employees, setEmployees, setIsAdding }) => {
   const [name, setName] = useState('');
+  const [completed, setCompleted] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [dueDate, setDueDate] = useState('');
@@ -11,7 +12,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
   const handleAdd = e => {
     e.preventDefault();
 
-    if (!name || !description || !date || !dueDate) {
+    if (!completed || !name || !description || !date || !dueDate) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -23,6 +24,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
     const id = employees.length + 1;
     const newEmployee = {
       id,
+      completed,
       name,
       description,
       date,
@@ -47,6 +49,16 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
     <div className="small-container">
       <form onSubmit={handleAdd}>
         <h1>Add Employee</h1>
+
+        <label htmlFor="completed">Complete?</label>
+        <input
+          id="completed"
+          type="text"
+          name="completed"
+          value={completed}
+          onChange={e => setCompleted(e.target.value)}
+        />
+
         <label htmlFor="name">Task Name</label>
         <input
           id="name"

@@ -17,6 +17,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
         <thead>
           <tr>
             <th>No.</th>
+            <th>Done?</th>
             <th>Task Name</th>
             <th>Description</th>
             <th>Date</th>
@@ -31,6 +32,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             employees.map((employee, i) => (
               <tr key={employee.id}>
                 <td>{i + 1}</td>
+                <td>{employee.completed}</td>
                 <td>{employee.name}</td>
                 <td>{employee.description}</td>
                 <td>{employee.date} </td>

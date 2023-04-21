@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 
 const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
   const id = selectedEmployee.id;
-
+  const [completed, setCompleted] = useState(selectedEmployee.completed)
   const [name, setName] = useState(selectedEmployee.name);
   const [description, setDescription] = useState(selectedEmployee.description);
   const [date, setDate] = useState(selectedEmployee.date);
@@ -13,7 +13,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
   const handleUpdate = e => {
     e.preventDefault();
 
-    if (!name || !description || !date || !dueDate) {
+    if (!completed || !name || !description || !date || !dueDate) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -24,6 +24,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
 
     const employee = {
       id,
+      completed,
       name,
       description,
       date,
@@ -44,7 +45,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
     Swal.fire({
       icon: 'success',
       title: 'Updated!',
-      text: `${employee.name} ${employee.description}'s data has been updated.`,
+      text: `${employee.name} task data has been updated.`,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -54,6 +55,14 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
     <div className="small-container">
       <form onSubmit={handleUpdate}>
         <h1>Edit Employee</h1>
+        <label htmlFor="completed">Task completed?</label>
+        <input
+          id="completed"
+          type="text"
+          name="completed"
+          value={completed}
+          onChange={e => setCompleted(e.target.value)}
+        />
         <label htmlFor="name">Task Name</label>
         <input
           id="name"
