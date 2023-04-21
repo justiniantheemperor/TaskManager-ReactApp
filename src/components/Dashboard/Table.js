@@ -17,10 +17,8 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
         <thead>
           <tr>
             <th>No.</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Salary</th>
+            <th>Task Name</th>
+            <th>Description</th>
             <th>Date</th>
             <th>Due Date</th>
             <th colSpan={2} className="text-center">
@@ -33,10 +31,8 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             employees.map((employee, i) => (
               <tr key={employee.id}>
                 <td>{i + 1}</td>
-                <td>{employee.firstName}</td>
-                <td>{employee.lastName}</td>
-                <td>{employee.email}</td>
-                <td>{formatter.format(employee.salary)}</td>
+                <td>{employee.name}</td>
+                <td>{employee.description}</td>
                 <td>{employee.date} </td>
                 <td>{employee.dueDate} </td>
                 <td className="text-right">
@@ -59,7 +55,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             ))
           ) : (
             <tr>
-              <td colSpan={7}>No Employees</td>
+              <td colSpan={7}>No Tasks</td>
             </tr>
           )}
         </tbody>
