@@ -9,6 +9,8 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
   const [email, setEmail] = useState(selectedEmployee.email);
   const [salary, setSalary] = useState(selectedEmployee.salary);
   const [date, setDate] = useState(selectedEmployee.date);
+  const [dueDate, setDueDate] = useState(selectedEmployee.dueDate);
+
 
   const handleUpdate = e => {
     e.preventDefault();
@@ -94,6 +96,14 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing }) => {
           name="date"
           value={date}
           onChange={e => setDate(e.target.value)}
+        />
+        <label htmlFor="dueDate">Due Date</label>
+        <input
+          id="dueDate"
+          type="date"
+          name="dueDate"
+          value={dueDate}
+          onChange={e => setDueDate(e.target.value)}
         />
         <div style={{ marginTop: '30px' }}>
           <input type="submit" value="Update" />

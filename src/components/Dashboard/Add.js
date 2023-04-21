@@ -7,11 +7,13 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
   const [email, setEmail] = useState('');
   const [salary, setSalary] = useState('');
   const [date, setDate] = useState('');
+  const [dueDate, setDueDate] = useState('');
+
 
   const handleAdd = e => {
     e.preventDefault();
 
-    if (!firstName || !lastName || !email || !salary || !date) {
+    if (!firstName || !lastName || !email || !salary || !date || !dueDate) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -28,6 +30,7 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
       email,
       salary,
       date,
+      dueDate,
     };
 
     employees.push(newEmployee);
@@ -87,6 +90,14 @@ const Add = ({ employees, setEmployees, setIsAdding }) => {
           name="date"
           value={date}
           onChange={e => setDate(e.target.value)}
+        />
+        <label htmlFor="dueDate">Due Date</label>
+        <input
+          id="dueDate"
+          type="date"
+          name="dueDate"
+          value={dueDate}
+          onChange={e => setDueDate(e.target.value)}
         />
         <div style={{ marginTop: '30px' }}>
           <input type="submit" value="Add" />
