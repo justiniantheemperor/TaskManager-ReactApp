@@ -5,12 +5,6 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
     employee.id = i + 1;
   });
 
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: null,
-  });
-
   return (
     <div className="contain-table">
       <table className="striped-table">
@@ -20,7 +14,6 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             <th>Done?</th>
             <th>Task Name</th>
             <th>Description</th>
-            <th>Date</th>
             <th>Due Date</th>
             <th colSpan={2} className="text-center">
               Actions
@@ -35,7 +28,6 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
                 <td>{employee.completed}</td>
                 <td>{employee.name}</td>
                 <td>{employee.description}</td>
-                <td>{employee.date} </td>
                 <td>{employee.dueDate} </td>
                 <td className="text-right">
                   <button
