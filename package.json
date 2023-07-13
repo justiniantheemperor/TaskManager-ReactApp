@@ -2,7 +2,7 @@
   "name": "task-manager",
   "version": "3.3.0",
   "private": true,
-  "homepage": "https://justiniantheemperor.github.io/task-manager/",
+  "homepage": " https://justiniantheemperor.github.io/TaskManager-ReactApp/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
