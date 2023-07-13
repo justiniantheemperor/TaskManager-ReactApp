@@ -5,6 +5,7 @@ const Add = ({ tasks, setTasks, setIsAdding }) => {
   const [name, setName] = useState('');
   const [completed, setCompleted] = useState('');
   const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
   const [hours, setHours] = useState('');
   const [dueDate, setDueDate] = useState('');
 
@@ -26,6 +27,7 @@ const Add = ({ tasks, setTasks, setIsAdding }) => {
       completed,
       name,
       description,
+      category,
       hours,
       dueDate,
     };
@@ -73,6 +75,14 @@ const Add = ({ tasks, setTasks, setIsAdding }) => {
           name="description"
           value={description}
           onChange={e => setDescription(e.target.value)}
+        />
+        <label htmlFor="category">Category</label>
+        <input
+          id="category"
+          type="text"
+          name="category"
+          value={category}
+          onChange={e => setCategory(e.target.value)}
         />
         <label htmlFor="hours">Hours</label>
         <input

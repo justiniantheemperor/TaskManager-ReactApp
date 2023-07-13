@@ -6,6 +6,7 @@ const Edit = ({ tasks, selectedTask, setTasks, setIsEditing }) => {
   const [completed, setCompleted] = useState(selectedTask.completed)
   const [name, setName] = useState(selectedTask.name);
   const [description, setDescription] = useState(selectedTask.description);
+  const [category, setCategory] = useState(selectedTask.category);
   const [hours, setHours] = useState(selectedTask.hours);
   const [dueDate, setDueDate] = useState(selectedTask.dueDate);
 
@@ -13,7 +14,7 @@ const Edit = ({ tasks, selectedTask, setTasks, setIsEditing }) => {
   const handleUpdate = e => {
     e.preventDefault();
 
-    if (!completed || !name || !description || !hours ||!dueDate) {
+    if (!completed || !name || !description || !category || !hours ||!dueDate) {
       return Swal.fire({
         icon: 'error',
         title: 'Error!',
@@ -27,6 +28,7 @@ const Edit = ({ tasks, selectedTask, setTasks, setIsEditing }) => {
       completed,
       name,
       description,
+      category,
       hours,
       dueDate,
     };
@@ -78,6 +80,14 @@ const Edit = ({ tasks, selectedTask, setTasks, setIsEditing }) => {
           name="description"
           value={description}
           onChange={e => setDescription(e.target.value)}
+        />
+        <label htmlFor="category">Category</label>
+        <input
+          id="category"
+          type="text"
+          name="category"
+          value={category}
+          onChange={e => setCategory(e.target.value)}
         />
         <label htmlFor="hours">Hours</label>
         <input

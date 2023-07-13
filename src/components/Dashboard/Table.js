@@ -14,6 +14,7 @@ const Table = ({ tasks, handleEdit, handleDelete }) => {
             <th>Done?</th>
             <th>Task Name</th>
             <th>Description</th>
+            <th>Category</th>
             <th>Hours</th>
             <th>Due Date</th>
             <th colSpan={2} className="text-center">
@@ -29,6 +30,7 @@ const Table = ({ tasks, handleEdit, handleDelete }) => {
                 <td>{task.completed}</td>
                 <td>{task.name}</td>
                 <td>{task.description}</td>
+                <td>{task.category}</td>
                 <td>{task.hours}</td>
                 <td>{task.dueDate} </td>
                 <td className="text-right">
