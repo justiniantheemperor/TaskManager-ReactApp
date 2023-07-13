@@ -1,4 +1,13 @@
+# Link
 
+Click on this link to see this project deployed: 
+
+https://justiniantheemperor.github.io/TaskManager-ReactApp/ 
+
+### Login Info
+
+sample email: admin@example.com
+sample password: qwerty
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
